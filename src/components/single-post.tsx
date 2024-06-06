@@ -30,7 +30,8 @@ export const SinglePost = async ({ postData }: { postData: PostProps }) => {
       <CardHeader></CardHeader>
       <CardContent className="flex items-center">
         <p className="font-bold">{postData.description}</p>
-        {session?.user && (
+        {/* check if the post is same as logged in user's post for deletion */}
+        {session?.user && session?.user.id === userData?.id && (
           <form action={actions.DeletePost} className="ml-auto">
             <Button type="submit" variant="link">
               <input
